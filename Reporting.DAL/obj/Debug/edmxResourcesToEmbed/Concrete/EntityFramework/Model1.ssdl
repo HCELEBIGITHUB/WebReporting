@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="workcube_boer_1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="RAPOR_KRITERLERI_HIDIR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER_ID" Type="nvarchar" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'workcube_boer_1.dbo.BOER_RAPOR_VIEW_SERVET' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BOER_RAPOR_VIEW_SERVET">
+    <Key>
+      <PropertyRef Name="KAYNAKTABLO" />
+      <PropertyRef Name="TicariGrIslemKodu" />
+      <PropertyRef Name="SALESMANREF" />
+      <PropertyRef Name="FARKLIFIYATASATIS" />
+      <PropertyRef Name="BuAy" />
+      <PropertyRef Name="BuYil" />
+      <PropertyRef Name="BuHafta" />
+      <PropertyRef Name="GecenHafta" />
+      <PropertyRef Name="BuQuarter" />
+      <PropertyRef Name="CARI_KART_TIPI" />
+      <PropertyRef Name="MALIYET_BIRIM" />
+      <PropertyRef Name="MALIYET" />
+      <PropertyRef Name="MALIYET_USD" />
+      <PropertyRef Name="KATEGORI" />
+      <PropertyRef Name="KATEGORI_ADI" />
+      <PropertyRef Name="RAP_USD_TUTAR" />
+      <PropertyRef Name="FirmaEmail" />
+      <PropertyRef Name="FirmaWebAdresi" />
+      <PropertyRef Name="FirmaSemt" />
+      <PropertyRef Name="FirmaTelefon" />
+    </Key>
+    <Property Name="KAYNAKTABLO" Type="int" Nullable="false" />
+    <Property Name="URUNKODU" Type="nvarchar" MaxLength="150" />
+    <Property Name="URUNADI" Type="nvarchar" MaxLength="500" />
+    <Property Name="PRODUCERCODE" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirmaKODU" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirmaUNVAN" Type="nvarchar" MaxLength="150" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="SATICIKODU" Type="int" />
+    <Property Name="SATICIADI" Type="nvarchar" MaxLength="101" />
+    <Property Name="TicariGrIslemKodu" Type="int" Nullable="false" />
+    <Property Name="TicariGrIslemAdi" Type="nvarchar" MaxLength="43" />
+    <Property Name="SUANKI_STOKMIKTARI" Type="float" />
+    <Property Name="MIKTAR" Type="float" />
+    <Property Name="NET" Type="float" />
+    <Property Name="NET_USD" Type="float" />
+    <Property Name="NETTotal" Type="float" />
+    <Property Name="NETTotal_USD" Type="float" />
+    <Property Name="VERGI" Type="float" />
+    <Property Name="SALESMANREF" Type="int" Nullable="false" />
+    <Property Name="FATURATIP" Type="int" />
+    <Property Name="FARKLIFIYATASATIS" Type="int" Nullable="false" />
+    <Property Name="EvrakTip" Type="nvarchar" MaxLength="100" />
+    <Property Name="FISNO" Type="nvarchar" MaxLength="100" />
+    <Property Name="TARIH" Type="datetime" />
+    <Property Name="Ay" Type="int" />
+    <Property Name="BuAy" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Yil" Type="int" />
+    <Property Name="BuYil" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Yil_Ay" Type="nvarchar" MaxLength="21" />
+    <Property Name="Hafta" Type="int" />
+    <Property Name="BuHafta" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="GecenHafta" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Quarter" Type="int" />
+    <Property Name="BuQuarter" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="OZELKOD2" Type="nvarchar" MaxLength="43" />
+    <Property Name="CARI_KART_TIPI" Type="int" Nullable="false" />
+    <Property Name="MALIYET_BIRIM" Type="float" Nullable="false" />
+    <Property Name="MALIYET" Type="float" Nullable="false" />
+    <Property Name="MALIYET_USD" Type="float" Nullable="false" />
+    <Property Name="KATEGORI" Type="int" Nullable="false" />
+    <Property Name="KATEGORI_ADI" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RAP_EURO_TUTAR" Type="float" />
+    <Property Name="MARKA" Type="nvarchar" MaxLength="50" />
+    <Property Name="MARKA_ADI" Type="nvarchar" MaxLength="50" />
+    <Property Name="RAP_USD_TUTAR" Type="int" Nullable="false" />
+    <Property Name="KAR" Type="float" />
+    <Property Name="KAR_USD" Type="float" />
+    <Property Name="KATKI_USD" Type="float" />
+    <Property Name="karyuzde2" Type="float" />
+    <Property Name="MusteriTemsilcisi" Type="nvarchar" MaxLength="101" />
+    <Property Name="FirmaYetkilisi" Type="nvarchar" MaxLength="101" />
+    <Property Name="FirmaEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirmaWebAdresi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirmaAdresi" Type="nvarchar" MaxLength="200" />
+    <Property Name="FirmaSemt" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirmaSehir" Type="nvarchar" MaxLength="43" />
+    <Property Name="FirmaTelefon" Type="nvarchar" MaxLength="87" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="workcube_boer_1ModelStoreContainer">
+    <EntitySet Name="RAPOR_KRITERLERI_HIDIR" EntityType="Self.RAPOR_KRITERLERI_HIDIR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BOER_RAPOR_VIEW_SERVET" EntityType="Self.BOER_RAPOR_VIEW_SERVET" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BOER_RAPOR_VIEW_SERVET].[KAYNAKTABLO] AS [KAYNAKTABLO], 
+    [BOER_RAPOR_VIEW_SERVET].[URUNKODU] AS [URUNKODU], 
+    [BOER_RAPOR_VIEW_SERVET].[URUNADI] AS [URUNADI], 
+    [BOER_RAPOR_VIEW_SERVET].[PRODUCERCODE] AS [PRODUCERCODE], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaKODU] AS [FirmaKODU], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaUNVAN] AS [FirmaUNVAN], 
+    [BOER_RAPOR_VIEW_SERVET].[EMAIL] AS [EMAIL], 
+    [BOER_RAPOR_VIEW_SERVET].[SATICIKODU] AS [SATICIKODU], 
+    [BOER_RAPOR_VIEW_SERVET].[SATICIADI] AS [SATICIADI], 
+    [BOER_RAPOR_VIEW_SERVET].[TicariGrIslemKodu] AS [TicariGrIslemKodu], 
+    [BOER_RAPOR_VIEW_SERVET].[TicariGrIslemAdi] AS [TicariGrIslemAdi], 
+    [BOER_RAPOR_VIEW_SERVET].[SUANKI_STOKMIKTARI] AS [SUANKI_STOKMIKTARI], 
+    [BOER_RAPOR_VIEW_SERVET].[MIKTAR] AS [MIKTAR], 
+    [BOER_RAPOR_VIEW_SERVET].[NET] AS [NET], 
+    [BOER_RAPOR_VIEW_SERVET].[NET_USD] AS [NET_USD], 
+    [BOER_RAPOR_VIEW_SERVET].[NETTotal] AS [NETTotal], 
+    [BOER_RAPOR_VIEW_SERVET].[NETTotal_USD] AS [NETTotal_USD], 
+    [BOER_RAPOR_VIEW_SERVET].[VERGI] AS [VERGI], 
+    [BOER_RAPOR_VIEW_SERVET].[SALESMANREF] AS [SALESMANREF], 
+    [BOER_RAPOR_VIEW_SERVET].[FATURATIP] AS [FATURATIP], 
+    [BOER_RAPOR_VIEW_SERVET].[FARKLIFIYATASATIS] AS [FARKLIFIYATASATIS], 
+    [BOER_RAPOR_VIEW_SERVET].[EvrakTip] AS [EvrakTip], 
+    [BOER_RAPOR_VIEW_SERVET].[FISNO] AS [FISNO], 
+    [BOER_RAPOR_VIEW_SERVET].[TARIH] AS [TARIH], 
+    [BOER_RAPOR_VIEW_SERVET].[Ay] AS [Ay], 
+    [BOER_RAPOR_VIEW_SERVET].[BuAy] AS [BuAy], 
+    [BOER_RAPOR_VIEW_SERVET].[Yil] AS [Yil], 
+    [BOER_RAPOR_VIEW_SERVET].[BuYil] AS [BuYil], 
+    [BOER_RAPOR_VIEW_SERVET].[Yil_Ay] AS [Yil_Ay], 
+    [BOER_RAPOR_VIEW_SERVET].[Hafta] AS [Hafta], 
+    [BOER_RAPOR_VIEW_SERVET].[BuHafta] AS [BuHafta], 
+    [BOER_RAPOR_VIEW_SERVET].[GecenHafta] AS [GecenHafta], 
+    [BOER_RAPOR_VIEW_SERVET].[Quarter] AS [Quarter], 
+    [BOER_RAPOR_VIEW_SERVET].[BuQuarter] AS [BuQuarter], 
+    [BOER_RAPOR_VIEW_SERVET].[OZELKOD2] AS [OZELKOD2], 
+    [BOER_RAPOR_VIEW_SERVET].[CARI_KART_TIPI] AS [CARI_KART_TIPI], 
+    [BOER_RAPOR_VIEW_SERVET].[MALIYET_BIRIM] AS [MALIYET_BIRIM], 
+    [BOER_RAPOR_VIEW_SERVET].[MALIYET] AS [MALIYET], 
+    [BOER_RAPOR_VIEW_SERVET].[MALIYET_USD] AS [MALIYET_USD], 
+    [BOER_RAPOR_VIEW_SERVET].[KATEGORI] AS [KATEGORI], 
+    [BOER_RAPOR_VIEW_SERVET].[KATEGORI_ADI] AS [KATEGORI_ADI], 
+    [BOER_RAPOR_VIEW_SERVET].[RAP_EURO_TUTAR] AS [RAP_EURO_TUTAR], 
+    [BOER_RAPOR_VIEW_SERVET].[MARKA] AS [MARKA], 
+    [BOER_RAPOR_VIEW_SERVET].[MARKA_ADI] AS [MARKA_ADI], 
+    [BOER_RAPOR_VIEW_SERVET].[RAP_USD_TUTAR] AS [RAP_USD_TUTAR], 
+    [BOER_RAPOR_VIEW_SERVET].[KAR] AS [KAR], 
+    [BOER_RAPOR_VIEW_SERVET].[KAR_USD] AS [KAR_USD], 
+    [BOER_RAPOR_VIEW_SERVET].[KATKI_USD] AS [KATKI_USD], 
+    [BOER_RAPOR_VIEW_SERVET].[karyuzde2] AS [karyuzde2], 
+    [BOER_RAPOR_VIEW_SERVET].[MusteriTemsilcisi] AS [MusteriTemsilcisi], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaYetkilisi] AS [FirmaYetkilisi], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaEmail] AS [FirmaEmail], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaWebAdresi] AS [FirmaWebAdresi], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaAdresi] AS [FirmaAdresi], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaSemt] AS [FirmaSemt], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaSehir] AS [FirmaSehir], 
+    [BOER_RAPOR_VIEW_SERVET].[FirmaTelefon] AS [FirmaTelefon]
+    FROM [dbo].[BOER_RAPOR_VIEW_SERVET] AS [BOER_RAPOR_VIEW_SERVET]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

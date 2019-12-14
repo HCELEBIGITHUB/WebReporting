@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="workcube_boer_1ModelStoreContainer" CdmEntityContainer="workcube_boer_1Entities">
+    <EntitySetMapping Name="RAPOR_KRITERLERI_HIDIR">
+      <EntityTypeMapping TypeName="workcube_boer_1Model.RAPOR_KRITERLERI_HIDIR">
+        <MappingFragment StoreEntitySet="RAPOR_KRITERLERI_HIDIR">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOER_RAPOR_VIEW_SERVET">
+      <EntityTypeMapping TypeName="workcube_boer_1Model.BOER_RAPOR_VIEW_SERVET">
+        <MappingFragment StoreEntitySet="BOER_RAPOR_VIEW_SERVET">
+          <ScalarProperty Name="KAYNAKTABLO" ColumnName="KAYNAKTABLO" />
+          <ScalarProperty Name="URUNKODU" ColumnName="URUNKODU" />
+          <ScalarProperty Name="URUNADI" ColumnName="URUNADI" />
+          <ScalarProperty Name="PRODUCERCODE" ColumnName="PRODUCERCODE" />
+          <ScalarProperty Name="FirmaKODU" ColumnName="FirmaKODU" />
+          <ScalarProperty Name="FirmaUNVAN" ColumnName="FirmaUNVAN" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SATICIKODU" ColumnName="SATICIKODU" />
+          <ScalarProperty Name="SATICIADI" ColumnName="SATICIADI" />
+          <ScalarProperty Name="TicariGrIslemKodu" ColumnName="TicariGrIslemKodu" />
+          <ScalarProperty Name="TicariGrIslemAdi" ColumnName="TicariGrIslemAdi" />
+          <ScalarProperty Name="SUANKI_STOKMIKTARI" ColumnName="SUANKI_STOKMIKTARI" />
+          <ScalarProperty Name="MIKTAR" ColumnName="MIKTAR" />
+          <ScalarProperty Name="NET" ColumnName="NET" />
+          <ScalarProperty Name="NET_USD" ColumnName="NET_USD" />
+          <ScalarProperty Name="NETTotal" ColumnName="NETTotal" />
+          <ScalarProperty Name="NETTotal_USD" ColumnName="NETTotal_USD" />
+          <ScalarProperty Name="VERGI" ColumnName="VERGI" />
+          <ScalarProperty Name="SALESMANREF" ColumnName="SALESMANREF" />
+          <ScalarProperty Name="FATURATIP" ColumnName="FATURATIP" />
+          <ScalarProperty Name="FARKLIFIYATASATIS" ColumnName="FARKLIFIYATASATIS" />
+          <ScalarProperty Name="EvrakTip" ColumnName="EvrakTip" />
+          <ScalarProperty Name="FISNO" ColumnName="FISNO" />
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+          <ScalarProperty Name="Ay" ColumnName="Ay" />
+          <ScalarProperty Name="BuAy" ColumnName="BuAy" />
+          <ScalarProperty Name="Yil" ColumnName="Yil" />
+          <ScalarProperty Name="BuYil" ColumnName="BuYil" />
+          <ScalarProperty Name="Yil_Ay" ColumnName="Yil_Ay" />
+          <ScalarProperty Name="Hafta" ColumnName="Hafta" />
+          <ScalarProperty Name="BuHafta" ColumnName="BuHafta" />
+          <ScalarProperty Name="GecenHafta" ColumnName="GecenHafta" />
+          <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+          <ScalarProperty Name="BuQuarter" ColumnName="BuQuarter" />
+          <ScalarProperty Name="OZELKOD2" ColumnName="OZELKOD2" />
+          <ScalarProperty Name="CARI_KART_TIPI" ColumnName="CARI_KART_TIPI" />
+          <ScalarProperty Name="MALIYET_BIRIM" ColumnName="MALIYET_BIRIM" />
+          <ScalarProperty Name="MALIYET" ColumnName="MALIYET" />
+          <ScalarProperty Name="MALIYET_USD" ColumnName="MALIYET_USD" />
+          <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+          <ScalarProperty Name="KATEGORI_ADI" ColumnName="KATEGORI_ADI" />
+          <ScalarProperty Name="RAP_EURO_TUTAR" ColumnName="RAP_EURO_TUTAR" />
+          <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+          <ScalarProperty Name="MARKA_ADI" ColumnName="MARKA_ADI" />
+          <ScalarProperty Name="RAP_USD_TUTAR" ColumnName="RAP_USD_TUTAR" />
+          <ScalarProperty Name="KAR" ColumnName="KAR" />
+          <ScalarProperty Name="KAR_USD" ColumnName="KAR_USD" />
+          <ScalarProperty Name="KATKI_USD" ColumnName="KATKI_USD" />
+          <ScalarProperty Name="karyuzde2" ColumnName="karyuzde2" />
+          <ScalarProperty Name="MusteriTemsilcisi" ColumnName="MusteriTemsilcisi" />
+          <ScalarProperty Name="FirmaYetkilisi" ColumnName="FirmaYetkilisi" />
+          <ScalarProperty Name="FirmaEmail" ColumnName="FirmaEmail" />
+          <ScalarProperty Name="FirmaWebAdresi" ColumnName="FirmaWebAdresi" />
+          <ScalarProperty Name="FirmaAdresi" ColumnName="FirmaAdresi" />
+          <ScalarProperty Name="FirmaSemt" ColumnName="FirmaSemt" />
+          <ScalarProperty Name="FirmaSehir" ColumnName="FirmaSehir" />
+          <ScalarProperty Name="FirmaTelefon" ColumnName="FirmaTelefon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

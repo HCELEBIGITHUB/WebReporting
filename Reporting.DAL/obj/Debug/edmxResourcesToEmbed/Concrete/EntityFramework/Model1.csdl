@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="workcube_boer_1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="RAPOR_KRITERLERI_HIDIR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_ID" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CREATED_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ACIKLAMA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BOER_RAPOR_VIEW_SERVET">
+    <Key>
+      <PropertyRef Name="KAYNAKTABLO" />
+      <PropertyRef Name="TicariGrIslemKodu" />
+      <PropertyRef Name="SALESMANREF" />
+      <PropertyRef Name="FARKLIFIYATASATIS" />
+      <PropertyRef Name="BuAy" />
+      <PropertyRef Name="BuYil" />
+      <PropertyRef Name="BuHafta" />
+      <PropertyRef Name="GecenHafta" />
+      <PropertyRef Name="BuQuarter" />
+      <PropertyRef Name="CARI_KART_TIPI" />
+      <PropertyRef Name="MALIYET_BIRIM" />
+      <PropertyRef Name="MALIYET" />
+      <PropertyRef Name="MALIYET_USD" />
+      <PropertyRef Name="KATEGORI" />
+      <PropertyRef Name="KATEGORI_ADI" />
+      <PropertyRef Name="RAP_USD_TUTAR" />
+      <PropertyRef Name="FirmaEmail" />
+      <PropertyRef Name="FirmaWebAdresi" />
+      <PropertyRef Name="FirmaSemt" />
+      <PropertyRef Name="FirmaTelefon" />
+    </Key>
+    <Property Name="KAYNAKTABLO" Type="Int32" Nullable="false" />
+    <Property Name="URUNKODU" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="URUNADI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PRODUCERCODE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FirmaKODU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirmaUNVAN" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SATICIKODU" Type="Int32" />
+    <Property Name="SATICIADI" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Name="TicariGrIslemKodu" Type="Int32" Nullable="false" />
+    <Property Name="TicariGrIslemAdi" Type="String" MaxLength="43" FixedLength="false" Unicode="true" />
+    <Property Name="SUANKI_STOKMIKTARI" Type="Double" />
+    <Property Name="MIKTAR" Type="Double" />
+    <Property Name="NET" Type="Double" />
+    <Property Name="NET_USD" Type="Double" />
+    <Property Name="NETTotal" Type="Double" />
+    <Property Name="NETTotal_USD" Type="Double" />
+    <Property Name="VERGI" Type="Double" />
+    <Property Name="SALESMANREF" Type="Int32" Nullable="false" />
+    <Property Name="FATURATIP" Type="Int32" />
+    <Property Name="FARKLIFIYATASATIS" Type="Int32" Nullable="false" />
+    <Property Name="EvrakTip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FISNO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TARIH" Type="DateTime" Precision="3" />
+    <Property Name="Ay" Type="Int32" />
+    <Property Name="BuAy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Yil" Type="Int32" />
+    <Property Name="BuYil" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Yil_Ay" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+    <Property Name="Hafta" Type="Int32" />
+    <Property Name="BuHafta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GecenHafta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Quarter" Type="Int32" />
+    <Property Name="BuQuarter" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OZELKOD2" Type="String" MaxLength="43" FixedLength="false" Unicode="true" />
+    <Property Name="CARI_KART_TIPI" Type="Int32" Nullable="false" />
+    <Property Name="MALIYET_BIRIM" Type="Double" Nullable="false" />
+    <Property Name="MALIYET" Type="Double" Nullable="false" />
+    <Property Name="MALIYET_USD" Type="Double" Nullable="false" />
+    <Property Name="KATEGORI" Type="Int32" Nullable="false" />
+    <Property Name="KATEGORI_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RAP_EURO_TUTAR" Type="Double" />
+    <Property Name="MARKA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MARKA_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RAP_USD_TUTAR" Type="Int32" Nullable="false" />
+    <Property Name="KAR" Type="Double" />
+    <Property Name="KAR_USD" Type="Double" />
+    <Property Name="KATKI_USD" Type="Double" />
+    <Property Name="karyuzde2" Type="Double" />
+    <Property Name="MusteriTemsilcisi" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Name="FirmaYetkilisi" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Name="FirmaEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirmaWebAdresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirmaAdresi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FirmaSemt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirmaSehir" Type="String" MaxLength="43" FixedLength="false" Unicode="true" />
+    <Property Name="FirmaTelefon" Type="String" MaxLength="87" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="workcube_boer_1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="RAPOR_KRITERLERI_HIDIR" EntityType="Self.RAPOR_KRITERLERI_HIDIR" />
+    <EntitySet Name="BOER_RAPOR_VIEW_SERVET" EntityType="Self.BOER_RAPOR_VIEW_SERVET" />
+  </EntityContainer>
+</Schema>
