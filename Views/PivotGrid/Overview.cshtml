@@ -1,0 +1,380 @@
+﻿@using Reporting.Entities.Model;
+
+
+@using System.Net.Http;
+@using System.Web.Http;
+@using DevExtreme.AspNet.Data;
+@using DevExtreme.AspNet.Mvc;
+@*@{Layout = null;}*@
+
+<!doctype html>
+<html>
+<head>
+    <title>grid </title>
+
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-9">
+    <META HTTP-EQUIV="Content-language" CONTENT="tr">
+
+    <link href="~/StylePivotGrid/StylePivotGrid.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+
+    <div id="pivotgrid-demo" style="padding-top:8%;">
+        <span style="top:-1%; text-align:center; align-content:center; "> Örnek Satış Raporu </span>
+
+        @*@(Html.DevExtreme().DataGrid()
+                            .DataSource(ds => ds
+                                .WebApi()
+                                .Controller("PivotGrid/RaporVerileri")
+                                //.Key("OrderID")
+                            )
+            )*@
+
+        @*OrderId = 10256,
+            Region = "Europe",
+            Country = "United Kingdom",
+            City = "London",
+            Amount = 6175,
+            Date = DateTime.Parse("2013/01/24")*@
+
+
+        @*@(Html.DevExtreme().Chart()
+                            .ID("pivotgrid-chart")
+                            .CommonSeriesSettings(s => s.Type(SeriesType.Bar))
+                            .Tooltip(t => t.Enabled(true).CustomizeTooltip("customize_tooltip").Format(Format.Currency))
+                            .Size(s => s.Height(200))
+                            .AdaptiveLayout(l => l.Width(450))
+        )
+
+        @(Html.DevExtreme().PivotGrid<Sale>()
+                            .AllowSorting(true)
+                            .AllowSortingBySummary(true)
+                            .AllowFiltering(true)
+                            .Height(620)
+                            .ShowBorders(true)
+                            .RowHeaderLayout(PivotGridRowHeadersLayout.Tree)
+                            .Scrolling(e => e.Mode(PivotGridScrollingMode.Virtual))
+
+                            .DataSource(d => d
+                            .Store(s =>
+
+                            s.WebApi().Controller("PivotGrid/RaporVerileri")
+                            )
+
+                                      .Fields(fields =>
+                                      {
+                                          fields.Add()
+                                          .Caption("Bolge")
+                                          .DataField("Region")
+                                          .Width(250)
+                                          .SortBySummaryField("Amount")
+                                          .SortBySummaryPath(new string[0])
+                                          .SortOrder(SortOrder.Desc)
+                                          .Expanded(true)
+                                          .Area(PivotGridArea.Row);
+
+
+                                          fields.Add()
+                                          .Caption("Ulke")
+                                          .DataField("Country")
+                                          .Width(250)
+                                          .SortBySummaryField("Amount")
+                                          .SortBySummaryPath(new string[0])
+                                          .SortOrder(SortOrder.Desc)
+                                          .Area(PivotGridArea.Row);
+
+                                          fields.Add()
+                                          .GroupName("Date")
+                                          .GroupInterval(PivotGridGroupInterval.Month);
+
+
+                                          fields.AddFor(m => m.Amount)
+                                  .Caption("Toplam")
+                                  .SummaryType(SummaryType.Sum)
+                                  .Format(Format.Currency)
+                                  .Area(PivotGridArea.Data);
+
+
+                                      }
+                                      )
+
+
+                            )
+                            .OnInitialized("bind_chart")
+
+        )*@
+
+
+
+
+        @*@(Html.DevExtreme().PivotGrid()
+                                .AllowSorting(true)
+                                .AllowSortingBySummary(true)
+                                .AllowFiltering(true)
+                                .Height(620)
+                                .ShowBorders(true)
+                                .RowHeaderLayout(PivotGridRowHeadersLayout.Tree)
+                                .Scrolling(e => e.Mode(PivotGridScrollingMode.Virtual))
+
+
+                                    .DataSource(d => d
+                                     .RemoteOperations(true)
+                                     .Store(s => s.RemoteController()
+                                         .Key("OrderID")
+                                         .LoadUrl("PivotGrid/RaporVerileri")
+                                     )
+
+
+
+
+
+                                    .Fields(fields =>
+                                    {
+                                        fields.Add()
+                                            .Caption("Region")
+                                            .DataField("Region")
+                                            .Width(250)
+                                            .SortBySummaryField("Amount")
+                                            .SortBySummaryPath(new string[0])
+                                            .SortOrder(SortOrder.Desc)
+                                            .Expanded(true)
+                                            .Area(PivotGridArea.Row);
+
+                                        fields.Add()
+                                            .Caption("Country")
+                                            .DataField("Country")
+                                            .Width(250)
+                                            .SortBySummaryField("Amount")
+                                            .SortBySummaryPath(new string[0])
+                                            .SortOrder(SortOrder.Desc)
+                                            .Area(PivotGridArea.Row);
+
+                                        fields.Add()
+                                            .Caption("City")
+                                            .DataField("City")
+                                            .Width(250)
+                                            .SortBySummaryField("Amount")
+                                            .SortBySummaryPath(new string[0])
+                                            .SortOrder(SortOrder.Desc)
+                                            .Area(PivotGridArea.Row);
+
+                                        fields.Add()
+                                            .Caption("Date")
+                                            .DataField("Date")
+                                            .DataType(PivotGridDataType.Date)
+                                            .Area(PivotGridArea.Column);
+
+                                        //fields.Add()
+                                        //    .Caption("Amount")
+                                        //    .DataField("SalesAmount")
+                                        //    .SummaryType(SummaryType.Sum)
+                                        //    .Format(Format.Currency)
+                                        //    .Area(PivotGridArea.Data);
+
+                                        //fields.Add()
+                                        //    .Caption("Store")
+                                        //    .DataField("StoreName");
+
+                                        //fields.Add()
+                                        //    .Caption("Quantity")
+                                        //    .DataField("SalesQuantity")
+                                        //    .SummaryType(SummaryType.Sum);
+
+                                        //fields.Add()
+                                        //    .Caption("Store")
+                                        //    .DataField("StoreName");
+
+                                        //fields.Add()
+                                        //    .Caption("Unit Price")
+                                        //    .DataField("UnitPrice")
+                                        //    .SummaryType(SummaryType.Sum)
+                                        //    .Format(Format.Currency);
+
+                                        //fields.Add()
+                                        //    .DataField("OrderId")
+                                        //    .Visible(false);
+                                    })
+            )
+            )*@ 
+        @*@(Html.DevExtreme().Chart()
+                                        .ID("pivotgrid-chart")
+                                        .CommonSeriesSettings(s => s.Type(SeriesType.Bar))
+                                        .Tooltip(t => t.Enabled(true).CustomizeTooltip("customize_tooltip").Format(Format.Currency))
+                                        .Size(s => s.Height(200))
+                                        .AdaptiveLayout(l => l.Width(450))
+            )*@
+
+        @(Html.DevExtreme().PivotGrid<Sale>()
+                                                                                                                                                                                                                                                    .ID("pivotgrid")
+                .AllowSortingBySummary(true)
+                .AllowFiltering(true)
+                .ShowBorders(true)
+                .ShowColumnGrandTotals(false)
+                .ShowRowGrandTotals(false)
+                .ShowRowTotals(false)
+                .ShowColumnTotals(false)
+                .FieldChooser(c => c.Enabled(true).Height(400))
+                .DataSource(d => d
+                .Store(s => s.WebApi().Controller("PivotGrid/RaporVerileri"))
+
+
+
+
+                .Fields(fields =>
+                {
+                    fields.AddFor(m => m.Region)
+            .Width(120)
+            .Area(PivotGridArea.Row)
+            .SortBySummaryField("Total");
+
+                    fields.AddFor(m => m.City)
+            .Width(150)
+            .Area(PivotGridArea.Row);
+
+                    fields.AddFor(m => m.Date)
+            .Area(PivotGridArea.Column);
+
+                    fields.Add()
+            .GroupName("Date")
+            .GroupInterval(PivotGridGroupInterval.Month)
+            .Visible(false);
+
+                    fields.AddFor(m => m.Amount)
+            .SummaryType(SummaryType.Sum)
+            .Format(Format.Currency)
+            .Area(PivotGridArea.Data);
+                })
+                )
+                .OnInitialized("bind_chart")
+            )
+
+
+
+        @{
+
+
+
+            //  string jsonData = (new WebClient()).DownloadString("http://localhost:29797/api/web");
+
+            // string jsonData2 = (new WebClient()).DownloadString("http://services.odata.org/V4/Northwind/Northwind.svc/Products");
+
+
+
+
+
+        }
+
+
+
+        @*@(Html.DevExtreme().DataGrid()
+                .DataSource(jsonData)
+            )*@
+
+
+        @*@(Html.DevExtreme().DataGrid()
+                                        .DataSource(ds => ds
+                                            .OData()
+                                            .Version(4)
+                                            .Url("http://services.odata.org/V4/Northwind/Northwind.svc/Products")
+                                            .JSONP(true)
+                                            .Key("ProductID")
+                                            .Expand("Category")
+                                        )
+            )
+        *@
+
+        @*@(Html.DevExtreme().DataGrid()
+                        .DataSource(ds => ds
+                            .OData()
+                            .Version(4)
+                            .Url("http://localhost:29797/api/web")
+                            .JSONP(true)
+                            .Key("ProductID")
+                            .Expand("Category")
+                        )
+            )*@
+
+
+
+        @*  @(Html.DevExtreme().DataGrid()
+                                                                                                        .DataSource(ds => ds
+                                                                                                            .StaticJson()
+                                                                                                            .Url("http://services.odata.org/V4/Northwind/Northwind.svc/Products")
+                                                                                                            .Key("ID")
+                                                                                                            .CacheAllData(true) // loads all data at once and saves it in cache; true by default
+                                                                                                        )
+            )*@
+
+
+        @*@(Html.DevExtreme().DataGrid()
+                .DataSource(ds => ds
+
+                    .JSONP(true)
+                    .Url("http://localhost:29797/api/web")
+                    .Key("ID")
+                    .CacheAllData(true) // loads all data at once and saves it in cache; true by default
+                )
+            )*@
+
+
+
+
+        @*@(Html.DevExtreme().DataGrid()
+                        .DataSource(ds => ds
+                            .OData()
+                            .Version(4)
+                            .Url("http://localhost:29797/api/web")
+                            .JSONP(true)
+                            .Key("OrderId")
+                            .Expand("City")
+                        )
+            )*@
+
+
+
+
+
+
+
+
+        @*http://localhost:29797/api/web*@
+        @*   $.getJSON("http://localhost:29797/api/web")   *@
+
+
+    </div>
+
+    <script>
+        function customize_tooltip(args) {
+            return {
+                html: args.seriesName + " | Total<div class='currency'>" + args.valueText + "</div>"
+            };
+        }
+
+        function bind_chart(e) {
+            e.component.bindChart($("#pivotgrid-chart"), {
+                dataFieldsDisplayMode: "splitPanes",
+                alternateDataFields: false
+            });
+            e.component.on("contentReady", contentReady);
+        }
+        function contentReady(e) {
+            e.component.off("contentReady", contentReady);
+            var dataSource = e.component.getDataSource()
+            dataSource.expandHeaderItem("row", ["North America"]);
+            dataSource.expandHeaderItem("column", [2013]);
+        }
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+

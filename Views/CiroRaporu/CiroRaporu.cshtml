@@ -1,0 +1,490 @@
+﻿@using Reporting.Entities.Model;
+@using System.Net.Http;
+@using System.Web.Http;
+@using DevExtreme.AspNet.Data;
+@using DevExtreme.AspNet.Mvc;
+@using System.Globalization;
+
+
+@{Layout = null;}
+
+
+<!doctype html>
+<html ng-app ng-csp>
+<head>
+    <title>grid </title>
+
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-9">
+    <META HTTP-EQUIV="Content-language" CONTENT="tr">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link href="~/StylePivotGrid/StylePivotGrid.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+    <div id="HtmlResult" style="padding-top:5%;height:120%; width:110%; ">
+
+        <table style="height:120%;width:110%; font-size:18px; font-weight:bold; background-color:white;">
+            <tr>
+                <td colspan="26" align="center"> <b>SATIŞ  ADET - MARKA RAPORU </b>    </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+
+
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px;text-indent:4px;text-shadow: 1px 1px 2px black;">OCAK</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">SUBAT</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">MART</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">NISAN</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">MAYIS</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">HAZIRAN</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">TEMMUZ</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">AGUSTOS</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">EYLUL</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">EKIM</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">KASIM</td>
+                <td colspan="3" style="background-color:blue;color:white; border:solid white 2px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;border-top-left-radius: 15px;border-top-right-radius: 15px; text-indent:4px;text-shadow: 1px 1px 2px black;">ARALIK</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="1" style=" font-size:12px;background-color:blue;color:white; border:solid white 2px; text-align:center;text-shadow: 1px 1px 2px black;">SATICI KODU</td>
+                <td colspan="1" style=" font-size:12px;background-color:blue;color:white; border:solid white 2px; text-align:center;text-shadow: 1px 1px 2px black; border-right:solid 4px white;">SATICI ADI</td>
+
+
+                @for (int i = 1; i <= 12; i++)
+                {
+
+                    <td colspan="1" style=" padding-left:3px;padding-right:3px;font-size:8px  !important;background-color:blue;color:white; border:solid black 0px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px; text-indent:4px;text-shadow: 1px 1px 2px black;">MARKA</td>
+
+
+                    <td colspan="1" style=" padding-left:3px;padding-right:3px;font-size:8px  !important;background-color:blue;color:white; border:solid black 0px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px; text-indent:4px;text-shadow: 1px 1px 2px black;;">ADET</td>
+                    <td colspan="1" style=" padding-left:3px;padding-right:3px;font-size:8px  !important;background-color:blue;color:white; border-right:solid white 4px; text-align:center; -moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px; text-indent:4px;text-shadow: 1px 1px 2px black;">TUTAR</td>
+
+                }
+
+
+
+
+
+            </tr>
+            @{
+                int yer = -1;
+                string renk1 = "#FF8A80";
+                string renk2 = "#F4FF81";
+                string gecerliRenk = "#F4FF81";
+                int p = 0;
+
+                string onceki_saticiKodu = "-1";
+                string simdiki_saticiKodu = "-1";
+                int kolonAdet = 38;
+                int mergeSatirAdet = 0;
+                string[] veri;
+                string ustCizgi = "";
+                bool mergeYapildi = false; // ayni satici icin satir birlestirme islemi
+                NumberFormatInfo myNumberFormatInfo = new CultureInfo("tr-TR", false).NumberFormat;
+                IEnumerable<SATICI_ADET_MARKA_VIEW_HIDIR2> satisAdetMarka = ViewData["SatisAdetMarka"] as IEnumerable<SATICI_ADET_MARKA_VIEW_HIDIR2>;
+
+                foreach (var item in satisAdetMarka)
+                {
+
+                    p++;
+                    gecerliRenk = renk1;
+                    if (p % 2 == 0)
+                    {
+
+                        gecerliRenk = renk2;
+
+                    }
+                    simdiki_saticiKodu = @item.SATICIKODU.ToString().Trim();
+
+                    // her satici icin cizgi ayirac
+
+
+
+
+                    <tr style="font-size:16px;font-weight:bold;background-color:@gecerliRenk;">
+
+
+                        @{
+
+                            mergeSatirAdet = 0;
+                            ustCizgi = "";
+                            if (@item.SATICIKODU.ToString().Trim() != onceki_saticiKodu.ToString().Trim() && onceki_saticiKodu.ToString().Trim() != "-1")
+                            {
+
+                                @*<tr style="font-size:16px;font-weight:bold;background-color:@gecerliRenk;"> <td colspan=@kolonAdet style="font-size:16px;font-weight:bold;background-color:@gecerliRenk;"> </td> </tr>*@
+
+                                ustCizgi = "border-top:solid 4px white;";
+
+                            }
+
+
+
+
+
+
+                            @*if ((@item.SATICIKODU.ToString().Trim() != onceki_saticiKodu.ToString().Trim()) || onceki_saticiKodu.ToString().Trim() == "-1")
+                                {
+                                    mergeSatirAdet = @item.MERGE_ADET;
+                                    mergeSatirAdet = 0;
+
+                                        <td rowspan="@mergeSatirAdet" style="font-size:16px; background-color:@renk1; vertical-align:middle; text-align:center; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border-bottom:solid 4px white;">@item.SATICIKODU</td>
+                                        <td rowspan="@mergeSatirAdet" style="font-size:16px; background-color:@renk1; vertical-align:middle; text-align:center; border-right:solid 4px white;border-bottom:solid 4px white;">@item.SATICIADI</td>
+
+
+
+
+
+                                }*@
+
+                            <td style="font-size:16px; background-color:@renk1; vertical-align:middle; text-align:center; -moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;border-bottom:solid 4px white;">@item.SATICIKODU</td>
+                            <td style="font-size:16px; background-color:@renk1; vertical-align:middle; text-align:center; border-right:solid 4px white;border-bottom:solid 4px white;">@item.SATICIADI</td>
+
+
+
+
+
+
+
+
+
+
+
+
+                            @*if (!string.IsNullOrEmpty(@item.AY_01))
+                                {
+
+                                    veri = @item.AY_01.Split('_');
+
+
+                                    <td style=" text-align:left; text-indent:6px ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center; text-indent:6px ; font-size:16px; font-weight:bold; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+
+                                    <td style=" text-align:right; text-indent:6px ; font-size:16px; font-weight:bold; border-right:solid 4px white;@ustCizgi;"> @Convert.ToDouble(@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo)).ToString("N", myNumberFormatInfo)  </td>
+
+
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+
+                                if (!string.IsNullOrEmpty(@item.AY_02))
+                                {
+                                    veri = @item.AY_02.Split('_');
+
+
+                                    <td style=" text-align:left; text-indent:6px ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;"> @Convert.ToInt32(@veri[0]).ToString("#,##0.###") </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+
+
+
+
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; text-indent:6px ;  border-right:solid 0px black;@ustCizgi;;">    </td>
+                                    <td style="font-size:16px; text-indent:6px ;  border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+
+                                if (!string.IsNullOrEmpty(@item.AY_03))
+                                {
+                                    veri = @item.AY_03.Split('_');
+
+
+                                    <td style=" text-align:left; text-indent:6px ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+
+
+                                if (!string.IsNullOrEmpty(@item.AY_04))
+                                {
+                                    veri = @item.AY_04.Split('_');
+
+
+                                    <td style=" text-align:left; text-indent:6px ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+
+
+
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+                                if (!string.IsNullOrEmpty(@item.AY_05))
+                                {
+                                    veri = @item.AY_05.Split('_');
+
+
+                                    <td style=" text-align:left; text-indent:6px ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; text-indent:6px ;  border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; text-indent:6px ;  border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+                                if (!string.IsNullOrEmpty(@item.AY_06))
+                                {
+                                    veri = @item.AY_06.Split('_');
+
+
+                                    <td style=" text-align:left; text-indent:6px; font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+
+
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:right; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+
+
+                                if (!string.IsNullOrEmpty(@item.AY_07))
+                                {
+                                    veri = @item.AY_07.Split('_');
+
+
+                                    <td style="  text-align:left; text-indent:6px;  ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+
+
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+
+                                if (!string.IsNullOrEmpty(@item.AY_08))
+                                {
+                                    veri = @item.AY_08.Split('_');
+
+
+                                    <td style="  text-align:left; text-indent:6px;  ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+
+
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+
+                                if (!string.IsNullOrEmpty(@item.AY_09))
+                                {
+                                    veri = @item.AY_09.Split('_');
+
+
+                                    <td style="  text-align:left; text-indent:6px; ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style="font-size:16px; text-indent:6px ;  border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+
+                                if (!string.IsNullOrEmpty(@item.AY_10))
+                                {
+                                    veri = @item.AY_10.Split('_');
+
+
+                                    <td style="  text-align:left; text-indent:6px;  ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style=" text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+
+
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+                                if (!string.IsNullOrEmpty(@item.AY_11))
+                                {
+                                    veri = @item.AY_11.Split('_');
+
+
+                                    <td style=" text-align:left; text-indent:6px;  ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style="text-align:center ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+                                }
+                                else
+                                {
+                                    <td style=" text-align:left ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }
+
+
+                                if (!string.IsNullOrEmpty(@item.AY_12))
+                                {
+                                    veri = @item.AY_12.Split('_');
+
+
+                                    <td style="  text-align:left; text-indent:6px;  ;font-size:16px; font-weight:bold;font-size:16px;@ustCizgi;">   @veri[1] </td>
+                                    <td style="font-size:16px; text-indent:6px ;  border-right:solid 0px black;@ustCizgi;">@Convert.ToInt32(@veri[0]).ToString("#,##0.###")  </td>
+                                    <td style=" text-align:right ; text-indent:6px ; font-size:16px; font-weight:bold;font-size:16px; border-right:solid 4px white;@ustCizgi;">@Convert.ToDouble(@veri[2]).ToString("N", myNumberFormatInfo) </td>
+                                }
+                                else
+                                {
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 0px black;@ustCizgi;">    </td>
+                                    <td style="font-size:16px; border-right:solid 4px white;@ustCizgi;">    </td>
+                                }*@
+
+
+
+                        }
+
+                    </tr>
+
+
+
+
+                    onceki_saticiKodu = @item.SATICIKODU.ToString();
+                }
+
+
+            }
+
+        </table>
+    </div>
+    <div id="pivotgrid-demo" style="padding-top:8%;">
+        <span style="top:-1%; text-align:center; align-content:center; "> Satış Ciro Raporu </span>
+
+
+
+        @(Html.DevExtreme().Chart()
+                                            .ID("pivotgrid-chart")
+                                            .CommonSeriesSettings(s => s.Type(SeriesType.Bar))
+                                            .Tooltip(t => t.Enabled(true).CustomizeTooltip("customize_tooltip").Format(Format.Currency))
+                                            .Size(s => s.Height(200))
+                                            .AdaptiveLayout(l => l.Width(450))
+        )
+
+        @(Html.DevExtreme().PivotGrid<BOER_RAPOR_VIEW_2019_DNM>()
+                                            .AllowSorting(true)
+                                            .AllowSortingBySummary(true)
+                                            .AllowFiltering(true)
+                                            .Height(620)
+                                            .ShowBorders(true)
+                                            .RowHeaderLayout(PivotGridRowHeadersLayout.Tree)
+                                            .Scrolling(e => e.Mode(PivotGridScrollingMode.Virtual))
+
+                                            .DataSource(d => d
+                                            .Store(s =>
+
+                                            s.WebApi().Controller("CiroRaporu/RaporVerileri"))
+
+                                                        .Fields(fields =>
+                                                        {
+                                                            fields.Add()
+                                                            .Caption("URUNKODU")
+                                                            .DataField("URUNKODU")
+                                                            .Width(250)
+                                                            .SortBySummaryField("MIKTAR")
+                                                            .SortBySummaryPath(new string[0])
+                                                            .SortOrder(SortOrder.Desc)
+                                                            .Expanded(true)
+                                                            .Area(PivotGridArea.Row);
+
+
+                                                            fields.Add()
+                                                            .Caption("URUNADI")
+                                                            .DataField("URUNADI")
+                                                            .Width(250)
+                                                            .SortBySummaryField("MIKTAR")
+                                                            .SortBySummaryPath(new string[0])
+                                                            .SortOrder(SortOrder.Desc)
+                                                            .Area(PivotGridArea.Row);
+
+
+
+
+                                                            fields.AddFor(m => m.MIKTAR)
+                                                            .Caption("Toplam")
+                                                            .SummaryType(SummaryType.Sum)
+                                                            .Format(Format.Currency)
+                                                            .Area(PivotGridArea.Data);
+                                                        })
+
+
+
+                                            ).OnInitialized("bind_chart")
+
+        )
+
+
+
+
+
+    </div>
+
+
+    <script>
+        function customize_tooltip(args) {
+            return {
+                html: args.seriesName + " | Total<div class='currency'>" + args.valueText + "</div>"
+            };
+        }
+
+        function bind_chart(e) {
+            e.component.bindChart($("#pivotgrid-chart"), {
+                dataFieldsDisplayMode: "splitPanes",
+                alternateDataFields: false
+            });
+            e.component.on("contentReady", contentReady);
+        }
+        function contentReady(e) {
+            e.component.off("contentReady", contentReady);
+            var dataSource = e.component.getDataSource()
+            dataSource.expandHeaderItem("row", ["North America"]);
+            dataSource.expandHeaderItem("column", [2013]);
+        }
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+

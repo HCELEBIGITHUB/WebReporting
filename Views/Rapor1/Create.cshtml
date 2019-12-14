@@ -1,0 +1,62 @@
+﻿@using Reporting.Entities.Model;
+
+@{
+    ViewBag.Title = "Yeni Kullanıcı";
+    Layout = null;
+
+}
+
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid orange;
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+
+    
+
+        <table style="width:60%">
+            <caption>Rapor kullanıcı hareketleri</caption>
+            <tr>
+                <th>ID</th>
+                <th>KULLANICI ID</th>
+                <th>ACIKLAMA</th>
+            </tr>
+            @{
+                foreach (var item in @Model)
+                {
+
+
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.USER_ID</td>
+                        <td>@item.ACIKLAMA</td>
+                    </tr>
+                }
+            }
+
+        </table>
+
+ 
+ </body>
+</html>
+
+
+
+
+

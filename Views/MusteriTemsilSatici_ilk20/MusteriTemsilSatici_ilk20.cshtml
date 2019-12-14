@@ -1,0 +1,165 @@
+﻿
+@{
+   // Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write(decodeURIComponent('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E'))</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cldrjs/0.4.4/cldr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cldrjs/0.4.4/cldr/event.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cldrjs/0.4.4/cldr/supplemental.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cldrjs/0.4.4/cldr/unresolved.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize/message.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize/number.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize/currency.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize/date.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.2.3/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.2.3/css/dx.light.css" />
+    <script src="https://cdn3.devexpress.com/jslib/19.2.3/js/dx.all.js"></script>
+ 
+    @*<script src="~/PivotJquery/PivotJqueryData.js"></script>*@
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+ 
+
+
+
+
+
+
+
+
+
+
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+    <title>MusteriTemsilSatici_ilk20</title>
+</head>
+<body class="dx-viewport">
+    @Html.Raw(@ViewData["tumHtml"])
+
+ 
+ 
+
+
+    @*<body class="dx-viewport">*@
+    <div class="demo-container">
+        <div id="pivotgrid-demo">
+            <div id="pivotgrid-chart"></div>
+            <div id="pivotgrid"></div>
+        </div>
+    </div>
+    @*</body>*@
+
+
+    @*<button type="button" id="button" value="excel" onclick="hello();">Excel</button>*@
+
+</body>
+
+</html>
+<script>
+    
+    $(function () {
+        var pivotGridChart = $('#pivotgrid-chart').dxChart({
+            commonSeriesSettings: {
+                type: 'bar'
+            },
+            tooltip: {
+                enabled: true,
+                format: '#,##0',
+                customizeTooltip: function (args) {
+                    return {
+                        html: args.seriesName + " | Toplam Tutar<div class='#,##0'>" + args.valueText + "</div>"
+                    };
+                }
+            },
+            size: {
+                height: 200
+            },
+            adaptiveLayout: {
+                width: 450
+            }
+        }).dxChart("instance");
+
+        var pivotGrid = $("#pivotgrid").dxPivotGrid({
+            allowSortingBySummary: true,
+            allowFiltering: true,
+            showBorders: true,
+            showColumnGrandTotals: false,
+            showRowGrandTotals: false,
+            showRowTotals: false,
+            showColumnTotals: false,
+            fieldChooser: {
+                enabled: true,
+                height: 400
+            },
+            dataSource: {
+                fields: [{
+                    caption: "MusteriTemsilcisi",
+                    width: 120,
+                    dataField: "MusteriTemsilcisi",
+                    area: "row",
+                    sortBySummaryField: "TUTAR"
+                }, {
+                    caption: "FirmaUNVAN",
+                    dataField: "FirmaUNVAN",
+                    width: 150,
+                    area: "row"
+                }, {
+                }, {
+                    caption: "SATICIADI",
+                    dataField: "SATICIADI",
+                    width: 150,
+                    area: "column"
+                }
+                    , {
+                    caption: "Toplam Tutar",
+                    dataField: "TUTAR",
+                    dataType: "double",
+                    summaryType: "sum",
+                    format: "currency",
+                    format: "#,##0",
+                    area: "data"
+                }],
+                store: sales
+            }
+        }).dxPivotGrid("instance");
+
+        pivotGrid.bindChart(pivotGridChart, {
+            dataFieldsDisplayMode: "splitPanes",
+            alternateDataFields: false
+        });
+
+        function expand() {
+            var dataSource = pivotGrid.getDataSource();
+            dataSource.expandHeaderItem("row", ["North America"]);
+            dataSource.expandHeaderItem("column", [2013]);
+        }
+
+        setTimeout(expand, 0);
+    });	
+
+
+    var sales =  @Html.Raw(Json.Encode(ViewData["SatisAdetMarkaJson"]));
+ 
+     
+
+      // var sales = [{      'id': 10248,      'region': 'North America',      'country': 'United States of America',      'city': 'New York',      'amount': 1740,      'date': new Date('2013-01-06')  }, {      'id': 10249,      'region': 'North America',      'country': 'United States of America',      'city': 'Los Angeles',      'amount': 850,      'date': new Date('2013-01-13')  }, {      'id': 10250,      'region': 'North America',      'country': 'United States of America',      'city': 'Denver',      'amount': 2235,      'date': new Date('2013-01-07')  }, {     'id': 10251,      'region': 'North America',      'country': 'Canada',      'city': 'Vancouver',      'amount': 1965,      'date': new Date('2013-01-03')  }   ];
+     
+</script>

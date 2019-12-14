@@ -1,0 +1,82 @@
+﻿@using Reporting.Entities.Model;
+
+@{
+    ViewBag.Title = "Rapor2";
+    Layout = null;
+    int yazilan_satir_adet = 0;
+
+
+}
+
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid orange;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <table style="width:60%">
+        <caption>Rapor2</caption>
+        <tr>
+      
+        </tr>
+
+        @foreach (var item in @Model)
+        {
+
+                    <tr>
+
+
+
+                        @if (yazilan_satir_adet > 0)
+                        {
+                            for (int i = 0; i < item.FieldCount; i++)
+                            {
+                                // if (!string.IsNullOrEmpty(@item[i]))
+
+                                <td> @item[i]</td>
+
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < item.Count; i++)
+                            {
+                                // if (!string.IsNullOrEmpty(@item[i]))
+
+                                <th> @item[i]</th>
+
+                            }
+                        }
+
+  
+                    </tr>
+
+          yazilan_satir_adet++;
+         }
+
+        
+
+
+    </table>
+
+
+</body>
+</html>
